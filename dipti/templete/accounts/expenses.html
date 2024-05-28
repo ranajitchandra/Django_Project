@@ -1,0 +1,188 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="content container-fluid">
+   <div class="page-header">
+      <div class="row align-items-center">
+         <div class="col">
+            <h3 class="page-title">Expenses</h3>
+            <ul class="breadcrumb">
+               <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
+               <li class="breadcrumb-item active">Expenses</li>
+            </ul>
+         </div>
+         <div class="col-auto text-right float-right ml-auto">
+            <a href="#" class="btn btn-outline-primary mr-2"><i class="fas fa-download"></i> Download</a>
+            <a href="add-expenses.html" class="btn btn-primary"><i class="fas fa-plus"></i></a>
+         </div>
+      </div>
+   </div>
+   <div class="row">
+      <div class="col-sm-12">
+         <div class="card card-table">
+            <div class="card-body">
+               <div class="table-responsive">
+                  <div id="DataTables_Table_0_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
+                     <div class="row">
+                        <div class="col-sm-12 col-md-6">
+                           <div class="dataTables_length" id="DataTables_Table_0_length">
+                              <label>
+                                 Show 
+                                 <select name="DataTables_Table_0_length" aria-controls="DataTables_Table_0" class="custom-select custom-select-sm form-control form-control-sm">
+                                    <option value="10">10</option>
+                                    <option value="25">25</option>
+                                    <option value="50">50</option>
+                                    <option value="100">100</option>
+                                 </select>
+                                 entries
+                              </label>
+                           </div>
+                        </div>
+                        <div class="col-sm-12 col-md-6"></div>
+                     </div>
+                     <div class="row">
+                        <div class="col-sm-12">
+                           <table class="table table-hover table-center mb-0 datatable dataTable no-footer" id="DataTables_Table_0" role="grid" aria-describedby="DataTables_Table_0_info">
+                              <thead>
+                                 <tr role="row">
+                                    <th class="sorting_asc" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-sort="ascending" aria-label="ID: activate to sort column descending" style="width: 48.9062px;">ID</th>
+                                    <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Item Name: activate to sort column ascending" style="width: 90.3594px;">Item Name</th>
+                                    <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Item Quality: activate to sort column ascending" style="width: 99.9062px;">Item Quality</th>
+                                    <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Amount: activate to sort column ascending" style="width: 65.7969px;">Amount</th>
+                                    <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Purchase Source: activate to sort column ascending" style="width: 136.734px;">Purchase Source</th>
+                                    <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Purchase Date: activate to sort column ascending" style="width: 118.625px;">Purchase Date</th>
+                                    <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Purchase By: activate to sort column ascending" style="width: 100.203px;">Purchase By</th>
+                                 </tr>
+                              </thead>
+                              <tbody>
+                                 <tr role="row" class="odd">
+                                    <td class="sorting_1">PRE1252</td>
+                                    <td>
+                                       <h2>
+                                          <a>Water Bottle</a>
+                                       </h2>
+                                    </td>
+                                    <td>267</td>
+                                    <td>$237</td>
+                                    <td>DJ Stationary</td>
+                                    <td>17 Oct 2020</td>
+                                    <td>Joe Kelley</td>
+                                 </tr>
+                                 <tr role="row" class="even">
+                                    <td class="sorting_1">PRE1534</td>
+                                    <td>
+                                       <h2>
+                                          <a>Hard disk</a>
+                                       </h2>
+                                    </td>
+                                    <td>2</td>
+                                    <td>$560</td>
+                                    <td>Sony Center</td>
+                                    <td>02 Oct 2020</td>
+                                    <td>Lois&nbsp;A</td>
+                                 </tr>
+                                 <tr role="row" class="odd">
+                                    <td class="sorting_1">PRE1536</td>
+                                    <td>
+                                       <h2>
+                                          <a>Hard disk</a>
+                                       </h2>
+                                    </td>
+                                    <td>3</td>
+                                    <td>$560</td>
+                                    <td>music Center</td>
+                                    <td>02 Oct 2020</td>
+                                    <td>Lois&nbsp;A</td>
+                                 </tr>
+                                 <tr role="row" class="even">
+                                    <td class="sorting_1">PRE2143</td>
+                                    <td>
+                                       <h2>
+                                          <a>Desk</a>
+                                       </h2>
+                                    </td>
+                                    <td>6</td>
+                                    <td>$378</td>
+                                    <td>Take Away</td>
+                                    <td>04 Sept 2020</td>
+                                    <td>Levell&nbsp;Scott</td>
+                                 </tr>
+                                 <tr role="row" class="odd">
+                                    <td class="sorting_1">PRE2153</td>
+                                    <td>
+                                       <h2>
+                                          <a>Note books</a>
+                                       </h2>
+                                    </td>
+                                    <td>100</td>
+                                    <td>$236</td>
+                                    <td>DJ Stationary</td>
+                                    <td>28 Oct 2020</td>
+                                    <td>Calvin</td>
+                                 </tr>
+                                 <tr role="row" class="even">
+                                    <td class="sorting_1">PRE2209</td>
+                                    <td>
+                                       <h2>
+                                          <a>Chair</a>
+                                       </h2>
+                                    </td>
+                                    <td>6</td>
+                                    <td>$120</td>
+                                    <td>Abc Shop</td>
+                                    <td>17 Aug 2020</td>
+                                    <td>Lois</td>
+                                 </tr>
+                                 <tr role="row" class="odd">
+                                    <td class="sorting_1">PRE2213</td>
+                                    <td>
+                                       <h2>
+                                          <a>Table</a>
+                                       </h2>
+                                    </td>
+                                    <td>2</td>
+                                    <td>$56</td>
+                                    <td>Online</td>
+                                    <td>05 Aug 2020</td>
+                                    <td>Malynne</td>
+                                 </tr>
+                                 <tr role="row" class="even">
+                                    <td class="sorting_1">PRE2431</td>
+                                    <td>
+                                       <h2>
+                                          <a>Projector</a>
+                                       </h2>
+                                    </td>
+                                    <td>1</td>
+                                    <td>$246</td>
+                                    <td>Real Shop</td>
+                                    <td>17 Sept 2020</td>
+                                    <td>Minnie</td>
+                                 </tr>
+                              </tbody>
+                           </table>
+                        </div>
+                     </div>
+                     <div class="row">
+                        <div class="col-sm-12 col-md-5">
+                           <div class="dataTables_info" id="DataTables_Table_0_info" role="status" aria-live="polite">Showing 1 to 8 of 8 entries</div>
+                        </div>
+                        <div class="col-sm-12 col-md-7">
+                           <div class="dataTables_paginate paging_simple_numbers" id="DataTables_Table_0_paginate">
+                              <ul class="pagination">
+                                 <li class="paginate_button page-item previous disabled" id="DataTables_Table_0_previous"><a href="#" aria-controls="DataTables_Table_0" data-dt-idx="0" tabindex="0" class="page-link">Previous</a></li>
+                                 <li class="paginate_button page-item active"><a href="#" aria-controls="DataTables_Table_0" data-dt-idx="1" tabindex="0" class="page-link">1</a></li>
+                                 <li class="paginate_button page-item next disabled" id="DataTables_Table_0_next"><a href="#" aria-controls="DataTables_Table_0" data-dt-idx="2" tabindex="0" class="page-link">Next</a></li>
+                              </ul>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+</div>
+{% endblock content %}
+

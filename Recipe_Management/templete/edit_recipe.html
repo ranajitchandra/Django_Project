@@ -1,0 +1,103 @@
+{% extends "base.html" %}
+{% block content %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recipe Form</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+        <h2 class="mt-4 mb-4">Recipe Form</h2>
+        <form action="{% url 'update_recipe' %}" method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="form-group">
+                <input type="hidden" class="form-control" id="recipeTitle" value="{{data.id}}" name="recipe_id">
+                <label for="recipeTitle">Recipe Title:</label>
+                <input type="text" class="form-control" id="recipeTitle" value="{{data.recipeTitle}}" name="recipeTitle">
+            </div>
+
+            <div class="form-group">
+                <label for="ingredients">Ingredients:</label>
+                <input type="text" class="form-control" id="ingredients" value="{{data.ingredients}}" name="ingredients">
+            </div>
+
+            <div class="form-group">
+                <label for="instructions">Instructions:</label>
+                <input type="text" class="form-control" id="instructions" value="{{data.instructions}}" name="instructions">
+            </div>
+
+            <div class="form-group">
+                <label for="preparationTime">Preparation Time (in minutes):</label>
+                <input type="text" class="form-control" id="preparationTime" value="{{data.preparationTime}}" name="preparationTime">
+            </div>
+
+            <div class="form-group">
+                <label for="cookingTime">Cooking Time (in minutes):</label>
+                <input type="text" class="form-control" id="cookingTime" value="{{data.cookingTime}}" name="cookingTime">
+            </div>
+
+            <div class="form-group">
+                <label for="totalTime">Total Time (in minutes):</label>
+                <input type="text" class="form-control" id="totalTime" value="{{data.totalTime}}" name="totalTime">
+            </div>
+
+            <div class="form-group">
+                <label for="nutritionalInfo">Nutritional Information:</label>
+                <input class="form-control" id="nutritionalInfo" value="{{data.nutritionalInfo}}" name="nutritionalInfo">
+            </div>
+
+
+            <div class="form-group">
+                <label for="difficultyLevel">Difficulty Level:</label>
+                <select class="form-control" id="difficultyLevel" name="difficultyLevel" required>
+                    <option value="easy">Easy</option>
+                    <option value="medium">Medium</option>
+                    <option value="hard">Hard</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="difficultyLevel">Recipe Category:</label>
+                <select class="form-control" id="difficultyLevel" name="recipe_category" required>
+                    <option value="breakfast">Breakfast</option>
+                    <option value="launch">Launch</option>
+                    <option value="dinner">Dinner</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="difficultyLevel">Tag Type:</label>
+                <select class="form-control" id="difficultyLevel"  name="Tag_type" required>
+                    <option value="vegetarian">Vegetarian</option>
+                    <option value="non_vegetarian">non-Vegetarian</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="totalCalories">Total Calories:</label>
+                <input type="text" class="form-control" id="totalCalories" value="{{data.totalCalories}}" name="totalCalories">
+            </div>
+
+            <div class="form-group">
+                <label for="recipeImage">Recipe Image:</label>
+                <input type="hidden" class="form-control-file" id="recipeImage" value="{{data.recipeImage}}" name="pre_recipeImage">
+                <input type="file" class="form-control-file" id="recipeImage" name="recipeImage">
+            </div>
+
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
+
+{% endblock content %}

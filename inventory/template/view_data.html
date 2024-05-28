@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+#customers {
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#customers td, #customers th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#customers tr:nth-child(even){background-color: #f2f2f2;}
+
+#customers tr:hover {background-color: #ddd;}
+
+#customers th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #04AA6D;
+  color: white;
+}
+</style>
+</head>
+<body>
+<table id="customers" style="margin-top: 10px">
+  <tr>
+    <th>Title</th>
+    <th>Name</th>
+    <th>Description</th>
+    <th>user</th>
+    <th>Action</th>
+  </tr>
+  {% for i in data %}
+    <tr>
+        <td>{{i.title}}</td>
+        <td>{{i.c_name}}</td>
+        <td>{{i.c_des}}</td>
+        <td>{{i.which_user}}</td>
+        <td>
+            <a href="{% url 'delete_data' i.id %}">delete</a>
+            <a href="{% url 'edit_data_page' i.id %}">Edit</a>
+        </td>
+    </tr>
+  {% endfor %}
+
+</table>
+
+</body>
+</html>
+
+
+{% endblock content %}
+
+

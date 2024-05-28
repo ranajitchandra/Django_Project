@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block content %}
+<!DOCTYPE html>
+<html>
+<body>
+{% if request.user_type == '' %}{% endif %}
+<h1>User = {{request.user}}</h1>
+<h1>Type = {{request.user.user_type}}</h1>
+
+
+</body>
+</html>
+{% endblock content %}
+

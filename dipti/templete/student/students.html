@@ -1,0 +1,355 @@
+{% extends "base.html" %}
+
+{% block content %}
+{% load static %}
+<div class="content container-fluid">
+   <div class="page-header">
+      <div class="row align-items-center">
+         <div class="col">
+            <h3 class="page-title">Students</h3>
+            <ul class="breadcrumb">
+               <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
+               <li class="breadcrumb-item active">Students</li>
+            </ul>
+         </div>
+         <div class="col-auto text-right float-right ml-auto">
+            <a href="#" class="btn btn-outline-primary mr-2"><i class="fas fa-download"></i> Download</a>
+            <a href="add-student.html" class="btn btn-primary"><i class="fas fa-plus"></i></a>
+         </div>
+      </div>
+   </div>
+   <div class="row">
+      <div class="col-sm-12">
+         <div class="card card-table">
+            <div class="card-body">
+               <div class="table-responsive">
+                  <div id="DataTables_Table_0_wrapper" class="dataTables_wrapper dt-bootstrap4 no-footer">
+                     <div class="row">
+                        <div class="col-sm-12 col-md-6">
+                           <div class="dataTables_length" id="DataTables_Table_0_length">
+                              <label>
+                                 Show 
+                                 <select name="DataTables_Table_0_length" aria-controls="DataTables_Table_0" class="custom-select custom-select-sm form-control form-control-sm">
+                                    <option value="10">10</option>
+                                    <option value="25">25</option>
+                                    <option value="50">50</option>
+                                    <option value="100">100</option>
+                                 </select>
+                                 entries
+                              </label>
+                           </div>
+                        </div>
+                        <div class="col-sm-12 col-md-6"></div>
+                     </div>
+                     <div class="row">
+                        <div class="col-sm-12">
+                           <table class="table table-hover table-center mb-0 datatable dataTable no-footer" id="DataTables_Table_0" role="grid" aria-describedby="DataTables_Table_0_info">
+                              <thead>
+                                 <tr role="row">
+                                    <th class="sorting_asc" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-sort="ascending" aria-label="ID: activate to sort column descending" style="width: 49.3281px;">ID</th>
+                                    <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Name: activate to sort column ascending" style="width: 182.422px;">Name</th>
+                                    <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Class: activate to sort column ascending" style="width: 45.0312px;">Class</th>
+                                    <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="DOB: activate to sort column ascending" style="width: 81.0156px;">DOB</th>
+                                    <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Parent Name: activate to sort column ascending" style="width: 110.219px;">Parent Name</th>
+                                    <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Mobile Number: activate to sort column ascending" style="width: 124.312px;">Mobile Number</th>
+                                    <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Address: activate to sort column ascending" style="width: 338.578px;">Address</th>
+                                    <th class="text-right sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Action: activate to sort column ascending" style="width: 74.4219px;">Action</th>
+                                 </tr>
+                              </thead>
+                              <tbody>
+                                    <tr>
+                                       <td>PRE2209</td>
+                                       <td>
+                                          <h2 class="table-avatar">
+                                             <a href="student-details.html" class="avatar avatar-sm mr-2"><img class="avatar-img rounded-circle" src="{% static 'assets/img/profiles/avatar-01.jpg' %}" alt="User Image"></a>
+                                             <a href="student-details.html">Aaliyah</a>
+                                          </h2>
+                                       </td>
+                                       <td>10 A</td>
+                                       <td>2 Feb 2002</td>
+                                       <td>Jeffrey Wong</td>
+                                       <td>097 3584 5870</td>
+                                       <td>911 Deer Ridge Drive,USA</td>
+                                       <td class="text-right">
+                                          <div class="actions">
+                                             <a href="edit-student.html" class="btn btn-sm bg-success-light mr-2">
+                                             <i class="fas fa-pen"></i>
+                                             </a>
+                                             <a href="#" class="btn btn-sm bg-danger-light">
+                                             <i class="fas fa-trash"></i>
+                                             </a>
+                                          </div>
+                                       </td>
+                                    </tr>
+                                    <tr>
+                                       <td>PRE2213</td>
+                                       <td>
+                                          <h2 class="table-avatar">
+                                             <a href="student-details.html" class="avatar avatar-sm mr-2"><img class="avatar-img rounded-circle" src="{% static 'assets/img/profiles/avatar-03.jpg' %}" alt="User Image"></a>
+                                             <a href="student-details.html">Malynne</a>
+                                          </h2>
+                                       </td>
+                                       <td>8 A</td>
+                                       <td>3 June 2010</td>
+                                       <td>Fields Malynne</td>
+                                       <td>242 362 3100</td>
+                                       <td>Bacardi Rd P.O. Box N-4880, New Providence</td>
+                                       <td class="text-right">
+                                          <div class="actions">
+                                             <a href="edit-student.html" class="btn btn-sm bg-success-light mr-2">
+                                             <i class="fas fa-pen"></i>
+                                             </a>
+                                             <a href="#" class="btn btn-sm bg-danger-light">
+                                             <i class="fas fa-trash"></i>
+                                             </a>
+                                          </div>
+                                       </td>
+                                    </tr>
+                                    <tr>
+                                       <td>PRE2143</td>
+                                       <td>
+                                          <h2 class="table-avatar">
+                                             <a href="student-details.html" class="avatar avatar-sm mr-2"><img class="avatar-img rounded-circle" src="{% static 'assets/img/profiles/avatar-02.jpg' %}" alt="User Image"></a>
+                                             <a href="student-details.html">Levell Scott</a>
+                                          </h2>
+                                       </td>
+                                       <td>10 A</td>
+                                       <td>12 Apr 2002</td>
+                                       <td>Jeffrey Scott</td>
+                                       <td>026 7318 4366</td>
+                                       <td>P.O. Box: 41, Gaborone</td>
+                                       <td class="text-right">
+                                          <div class="actions">
+                                             <a href="edit-student.html" class="btn btn-sm bg-success-light mr-2">
+                                             <i class="fas fa-pen"></i>
+                                             </a>
+                                             <a href="#" class="btn btn-sm bg-danger-light">
+                                             <i class="fas fa-trash"></i>
+                                             </a>
+                                          </div>
+                                       </td>
+                                    </tr>
+                                    <tr>
+                                       <td>PRE2431</td>
+                                       <td>
+                                          <h2 class="table-avatar">
+                                             <a href="student-details.html" class="avatar avatar-sm mr-2"><img class="avatar-img rounded-circle" src="{% static 'assets/img/profiles/avatar-03.jpg' %}" alt="User Image"></a>
+                                             <a href="student-details.html">Minnie</a>
+                                          </h2>
+                                       </td>
+                                       <td>11 C</td>
+                                       <td>24 Feb 2000</td>
+                                       <td>J Shaffer</td>
+                                       <td>952 512 4909</td>
+                                       <td>4771 Oral Lake Road, Golden Valley</td>
+                                       <td class="text-right">
+                                          <div class="actions">
+                                             <a href="edit-student.html" class="btn btn-sm bg-success-light mr-2">
+                                             <i class="fas fa-pen"></i>
+                                             </a>
+                                             <a href="#" class="btn btn-sm bg-danger-light">
+                                             <i class="fas fa-trash"></i>
+                                             </a>
+                                          </div>
+                                       </td>
+                                    </tr>
+                                    <tr>
+                                       <td>PRE1534</td>
+                                       <td>
+                                          <h2 class="table-avatar">
+                                             <a href="student-details.html" class="avatar avatar-sm mr-2"><img class="avatar-img rounded-circle" src="{% static 'assets/img/profiles/avatar-04.jpg' %}" alt="User Image"></a>
+                                             <a href="student-details.html">Lois A</a>
+                                          </h2>
+                                       </td>
+                                       <td>10 A</td>
+                                       <td>22 Jul 2006</td>
+                                       <td>Cleary Wong</td>
+                                       <td>413 289 1314</td>
+                                       <td>2844 Leverton Cove Road, Palmer</td>
+                                       <td class="text-right">
+                                          <div class="actions">
+                                             <a href="edit-student.html" class="btn btn-sm bg-success-light mr-2">
+                                             <i class="fas fa-pen"></i>
+                                             </a>
+                                             <a href="#" class="btn btn-sm bg-danger-light">
+                                             <i class="fas fa-trash"></i>
+                                             </a>
+                                          </div>
+                                       </td>
+                                    </tr>
+                                    <tr>
+                                       <td>PRE2153</td>
+                                       <td>
+                                          <h2 class="table-avatar">
+                                             <a href="student-details.html" class="avatar avatar-sm mr-2"><img class="avatar-img rounded-circle" src="{% static 'assets/img/profiles/avatar-05.jpg' %}" alt="User Image"></a>
+                                             <a href="student-details.html">Calvin</a>
+                                          </h2>
+                                       </td>
+                                       <td>9 B</td>
+                                       <td>8 Dec 2003</td>
+                                       <td>Minnie J Shaffer</td>
+                                       <td>701 753 3810</td>
+                                       <td>1900 Hidden Meadow Drive, Crete</td>
+                                       <td class="text-right">
+                                          <div class="actions">
+                                             <a href="edit-student.html" class="btn btn-sm bg-success-light mr-2">
+                                             <i class="fas fa-pen"></i>
+                                             </a>
+                                             <a href="#" class="btn btn-sm bg-danger-light">
+                                             <i class="fas fa-trash"></i>
+                                             </a>
+                                          </div>
+                                       </td>
+                                    </tr>
+                                    <tr>
+                                       <td>PRE1252</td>
+                                       <td>
+                                          <h2 class="table-avatar">
+                                             <a href="student-details.html" class="avatar avatar-sm mr-2"><img class="avatar-img rounded-circle" src="{% static 'assets/img/profiles/avatar-06.jpg' %}" alt="User Image"></a>
+                                             <a href="student-details.html">Joe Kelley</a>
+                                          </h2>
+                                       </td>
+                                       <td>11 C</td>
+                                       <td>7 Oct 2000</td>
+                                       <td>Vincent Howard</td>
+                                       <td>402 221 7523</td>
+                                       <td>3979 Ashwood Drive, Omaha</td>
+                                       <td class="text-right">
+                                          <div class="actions">
+                                             <a href="edit-student.html" class="btn btn-sm bg-success-light mr-2">
+                                             <i class="fas fa-pen"></i>
+                                             </a>
+                                             <a href="#" class="btn btn-sm bg-danger-light">
+                                             <i class="fas fa-trash"></i>
+                                             </a>
+                                          </div>
+                                       </td>
+                                    </tr>
+                                    <tr>
+                                       <td>PRE1434</td>
+                                       <td>
+                                          <h2 class="table-avatar">
+                                             <a href="student-details.html" class="avatar avatar-sm mr-2"><img class="avatar-img rounded-circle" src="{% static 'assets/img/profiles/avatar-07.jpg' %}" alt="User Image"></a>
+                                             <a href="student-details.html">Vincent</a>
+                                          </h2>
+                                       </td>
+                                       <td>10 A</td>
+                                       <td>4 Jan 2002</td>
+                                       <td>Kelley Joe</td>
+                                       <td>402 221 7523</td>
+                                       <td>3979 Ashwood Drive, Omaha</td>
+                                       <td class="text-right">
+                                          <div class="actions">
+                                             <a href="edit-student.html" class="btn btn-sm bg-success-light mr-2">
+                                             <i class="fas fa-pen"></i>
+                                             </a>
+                                             <a href="#" class="btn btn-sm bg-danger-light">
+                                             <i class="fas fa-trash"></i>
+                                             </a>
+                                          </div>
+                                       </td>
+                                    </tr>
+                                    <tr>
+                                       <td>PRE2345</td>
+                                       <td>
+                                          <h2 class="table-avatar">
+                                             <a href="student-details.html" class="avatar avatar-sm mr-2"><img class="avatar-img rounded-circle" src="{% static 'assets/img/profiles/avatar-08.jpg' %}" alt="User Image"></a>
+                                             <a href="student-details.html">Kozma  Tatari</a>
+                                          </h2>
+                                       </td>
+                                       <td>9 A</td>
+                                       <td>1 Feb 2006</td>
+                                       <td>Lombardi</td>
+                                       <td>04 2239 968</td>
+                                       <td>Rruga E Kavajes, Condor Center, Tirana</td>
+                                       <td class="text-right">
+                                          <div class="actions">
+                                             <a href="edit-student.html" class="btn btn-sm bg-success-light mr-2">
+                                             <i class="fas fa-pen"></i>
+                                             </a>
+                                             <a href="#" class="btn btn-sm bg-danger-light">
+                                             <i class="fas fa-trash"></i>
+                                             </a>
+                                          </div>
+                                       </td>
+                                    </tr>
+                                    <tr>
+                                       <td>PRE2365</td>
+                                       <td>
+                                          <h2 class="table-avatar">
+                                             <a href="student-details.html" class="avatar avatar-sm mr-2"><img class="avatar-img rounded-circle" src="{% static 'assets/img/profiles/avatar-09.jpg' %}" alt="User Image"></a>
+                                             <a href="student-details.html">John Chambers</a>
+                                          </h2>
+                                       </td>
+                                       <td>11 B</td>
+                                       <td>13 Sept 2003</td>
+                                       <td>Wong Jeffrey</td>
+                                       <td>870 663 2334</td>
+                                       <td>4667 Sunset Drive, Pine Bluff</td>
+                                       <td class="text-right">
+                                          <div class="actions">
+                                             <a href="edit-student.html" class="btn btn-sm bg-success-light mr-2">
+                                             <i class="fas fa-pen"></i>
+                                             </a>
+                                             <a href="#" class="btn btn-sm bg-danger-light">
+                                             <i class="fas fa-trash"></i>
+                                             </a>
+                                          </div>
+                                       </td>
+                                    </tr>
+                                    <tr>
+                                       <td>PRE1234</td>
+                                       <td>
+                                          <h2 class="table-avatar">
+                                             <a href="student-details.html" class="avatar avatar-sm mr-2"><img class="avatar-img rounded-circle" src="{% static 'assets/img/profiles/avatar-10.jpg' %}" alt="User Image"></a>
+                                             <a href="student-details.html">Nathan Humphries</a>
+                                          </h2>
+                                       </td>
+                                       <td>10 B</td>
+                                       <td>26 Apr 1994</td>
+                                       <td>Stephen Marley</td>
+                                       <td>077 3499 9959</td>
+                                       <td>86 Lamphey Road, Thelnetham</td>
+                                       <td class="text-right">
+                                          <div class="actions">
+                                             <a href="edit-student.html" class="btn btn-sm bg-success-light mr-2">
+                                             <i class="fas fa-pen"></i>
+                                             </a>
+                                             <a href="#" class="btn btn-sm bg-danger-light">
+                                             <i class="fas fa-trash"></i>
+                                             </a>
+                                          </div>
+                                       </td>
+                                    </tr>
+                                 </tbody>
+                           </table>
+                        </div>
+                     </div>
+                     <div class="row">
+                        <div class="col-sm-12 col-md-5">
+                           <div class="dataTables_info" id="DataTables_Table_0_info" role="status" aria-live="polite">Showing 1 to 10 of 11 entries</div>
+                        </div>
+                        <div class="col-sm-12 col-md-7">
+                           <div class="dataTables_paginate paging_simple_numbers" id="DataTables_Table_0_paginate">
+                              <ul class="pagination">
+                                 <li class="paginate_button page-item previous disabled" id="DataTables_Table_0_previous"><a href="#" aria-controls="DataTables_Table_0" data-dt-idx="0" tabindex="0" class="page-link">Previous</a></li>
+                                 <li class="paginate_button page-item active"><a href="#" aria-controls="DataTables_Table_0" data-dt-idx="1" tabindex="0" class="page-link">1</a></li>
+                                 <li class="paginate_button page-item "><a href="#" aria-controls="DataTables_Table_0" data-dt-idx="2" tabindex="0" class="page-link">2</a></li>
+                                 <li class="paginate_button page-item next" id="DataTables_Table_0_next"><a href="#" aria-controls="DataTables_Table_0" data-dt-idx="3" tabindex="0" class="page-link">Next</a></li>
+                              </ul>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+</div>
+{% endblock content %}
+
+
+
+
+

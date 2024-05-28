@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+
+{% block content %}
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+#customers {
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#customers td, #customers th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#customers tr:nth-child(even){background-color: #f2f2f2;}
+
+#customers tr:hover {background-color: #ddd;}
+
+#customers th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #04AA6D;
+  color: white;
+}
+</style>
+</head>
+<body>
+
+<h1>A Fancy Table</h1>
+
+<table id="customers">
+  <tr>
+    <th>name</th>
+    <th>roll</th>
+    <th>lavel</th>
+    <th>image</th>
+    <th>edit</th>
+    <th>delete</th>
+  </tr>
+  {% for i in row %}
+  <tr>
+    <td>{{i.name}}</td>
+    <td>{{i.roll}}</td>
+    <td>{{i.lavel}}</td>
+    <td><img src="/{{i.std_img}}" width="100" height="100"></td>
+    <td> <a href="{% url 'edit_student' i.id %}">Edit</a> </td>
+    <td> <a href="{% url 'delete_student' i.id %}">Delete</a> </td>
+  </tr>
+  {% endfor %}
+</table>
+</body>
+</html>
+
+{% endblock content %}

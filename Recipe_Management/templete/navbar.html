@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Animated Navbar with Hover and Logout</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Custom CSS -->
+  <style>
+    /* Custom styles for the navbar */
+    .navbar-brand img {
+      max-width: 50px;
+      height: auto;
+    }
+    /* Animation for the navbar */
+    @keyframes fadeInDown {
+      from {
+        opacity: 0;
+        transform: translateY(-10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    .animated-navbar .navbar-nav .nav-item {
+      animation: fadeInDown 0.5s ease forwards;
+      opacity: 0;
+    }
+    .animated-navbar .navbar-nav .nav-item:nth-child(1) {
+      animation-delay: 0.1s;
+    }
+    .animated-navbar .navbar-nav .nav-item:nth-child(2) {
+      animation-delay: 0.2s;
+    }
+    .animated-navbar .navbar-nav .nav-item:nth-child(3) {
+      animation-delay: 0.3s;
+    }
+    .animated-navbar .navbar-nav .nav-item:nth-child(4) {
+      animation-delay: 0.4s;
+    }
+    /* Hover effect for nav links */
+    .nav-link:hover {
+      color: #007bff !important; /* Change color on hover */
+    }
+  </style>
+</head>
+<body>
+  
+  <nav class="navbar navbar-expand-lg navbar-light bg-light animated-navbar">
+    <div class="container">
+      {% comment %} <a class="navbar-brand" href="#"><img src="logo.png" alt="Logo"></a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button> {% endcomment %}
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+            
+          <li class="nav-item active">
+            <a class="nav-link" href="{% url 'home_page' %}">Home</a>
+          </li>
+
+          {% if request.user.user_type == 'chef' %}
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'view_recipe' %}">Recipe</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'add_recipe' %}">Add Recipe</a>
+          </li>
+          {% endif %}
+
+          {% if request.user.user_type == 'viewer' %}
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'view2_recipe' %}">Recipe</a>
+          </li>
+          {% endif %}
+
+          
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'user_profile' %}">Profile</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'chef_profile_page' %}">Profile2</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'logout_user' %}">Logout</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

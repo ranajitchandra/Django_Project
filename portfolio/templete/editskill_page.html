@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <main id="main">
+        <!-- ======= Contact Section ======= -->
+        <section id="contact" class="contact">
+            <div class="container" data-aos="fade-up">
+
+                <div class="section-title">
+                <h2>Skill Edit</h2>
+                </div>
+
+                <div class="row mt-1">
+                    <div class="col-lg-3 mt-5 mt-lg-0">
+                    </div>
+
+                    <div class="col-lg-6 mt-5 mt-lg-0">
+                        <form action="{% url 'sava_skill' %}" enctype="multipart/form-data" method="POST" role="form">
+                        {% csrf_token %}
+                        <div class="form-group mt-3">
+                            <input type="hidden" value="{{row_skill.id}}" class="form-control" name="skill_id" id="info_id" required>
+                        </div>
+
+                        <div class="form-group mt-3">
+                            <input type="text" value="{{row_skill.s_html}}" class="form-control" name="s_html" id="info_id" required>
+                        </div>
+
+                        <div class="form-group mt-3">
+                            <input type="text" value="{{row_skill.s_css}}" class="form-control" name="s_css" id="subject" required>
+                        </div>
+
+                        <div class="form-group mt-3">
+                            <input type="text" value="{{row_skill.s_js}}" class="form-control" name="s_js" id="subject" required>
+                        </div>
+
+                        <div class="form-group mt-3">
+                            <input type="text" value="{{row_skill.s_python}}" class="form-control" name="s_python" id="subject" required>
+                        </div>
+
+                        <div class="form-group mt-3">
+                            <input type="text" value="{{row_skill.s_php}}" class="form-control" name="s_php" id="subject" required>
+                        </div>
+                        
+                        <div class="form-group mt-3">
+                            <input type="text" value="{{row_skill.s_sql}}" class="form-control" name="s_sql" id="subject" required>
+                        </div>
+                            <button type="submit" class="btn btn-primary mt-3 w-100">Submit</button>
+                        </form>
+                    </div>
+
+                    <div class="col-lg-3 mt-5 mt-lg-0">
+                    </div>
+
+                </div>
+
+            </div>
+        </section><!-- End Contact Section -->
+    </main>
+
+{% endblock content %}

@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Recipe Profile</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <style>
+    .recipe-image {
+      width: 100%;
+      height: auto;
+      border-radius: 8px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 offset-md-3">
+        <div class="text-center mb-4">
+          <img src="/{{request.user.user_image}}" alt="Recipe Image" class="recipe-image mb-3">
+          <h2>{{request.user.display_name}}</h2>
+          <p style="font-weight:bold;">User by ( {{request.user.user_type}} )</p>
+        </div>
+        <div class="card">
+          <div class="card-body">
+            <ul class="list-unstyled">
+                <li>Age: {{request.user.age}}</li>
+                <li>City: {{request.user.city}}</li>
+                <li>Country: {{request.user.country}}</li>
+                <li>Gender: {{request.user.gender}}</li>
+            </ul>
+          </div>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+
+  <!-- Bootstrap JS and Font Awesome -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
+
+
+{% endblock content %}

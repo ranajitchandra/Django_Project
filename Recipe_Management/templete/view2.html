@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="container-fluid">
+    <table class="table table-striped">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">Recipe Title</th>
+          <th scope="col">Ingredients</th>
+          <th scope="col">Instructions</th>
+          <th scope="col">Preparation Time</th>
+          <th scope="col">Cooking Time</th>
+          <th scope="col">Total Time</th>
+          <th scope="col">Nutritional Information</th>
+          <th scope="col">Difficulty Level</th>
+          <th scope="col">Recipe Category</th>
+          <th scope="col">Tag Type</th>
+          <th scope="col">Total Calories</th>
+          <th scope="col">Image</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for i in data %}
+        <tr>
+            <th scope="row">{{i.recipeTitle}}</th>
+            <th scope="row">{{i.ingredients}}</th>
+            <th scope="row">{{i.instructions}}</th>
+            <th scope="row">{{i.preparationTime}}</th>
+            <th scope="row">{{i.cookingTime}}</th>
+            <th scope="row">{{i.totalTime}}</th>
+            <th scope="row">{{i.nutritionalInfo}}</th>
+            <th scope="row">{{i.difficultyLevel}}</th>
+            <th scope="row">{{i.recipe_category}}</th>
+            <th scope="row">{{i.Tag_type}}</th>
+            <th scope="row">{{i.totalCalories}}</th>
+            <th scope="row"><img src="/{{i.recipeImage}}" width="80"></th>
+        </tr>
+        
+        {% endfor %}
+        
+        
+      </tbody>
+    </table>
+  </div>
+  
+
+
+{% endblock content %}

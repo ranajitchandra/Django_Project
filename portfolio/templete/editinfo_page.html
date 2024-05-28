@@ -1,0 +1,83 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <main id="main">
+        <!-- ======= Contact Section ======= -->
+        <section id="contact" class="contact">
+            <div class="container" data-aos="fade-up">
+
+                <div class="section-title">
+                <h2>Info Edit</h2>
+                </div>
+
+                <div class="row mt-1">
+                    <div class="col-lg-3 mt-5 mt-lg-0">
+                    </div>
+
+                    <div class="col-lg-6 mt-5 mt-lg-0">
+                        <form action="{% url 'sava_info' %}" enctype="multipart/form-data" method="POST" role="form">
+                        {% csrf_token %}
+                        <div class="form-group mt-3">
+                            <input type="text" value="{{row_info.id}}" class="form-control" name="info_id" id="info_id" placeholder="Name" required>
+                        </div>
+
+                        <div class="form-group mt-3">
+                            <input type="text" value="{{row_info.name}}" class="form-control" name="name" id="subject" placeholder="Name" required>
+                        </div>
+
+                        <div class="form-group mt-3">
+                            <input type="text" value="{{row_info.address}}" class="form-control" name="address" id="subject" placeholder="Address" required>
+                        </div>
+
+                        <div class="form-group mt-3">
+                            <input type="text" value="{{row_info.occupation}}" class="form-control" name="occupation" id="subject" placeholder="occupation" required>
+                        </div>
+
+                        <div class="form-group mt-3">
+                            <input type="text" value="{{row_info.phone}}" class="form-control" name="phone" id="subject" placeholder="phone" required>
+                        </div>
+                        
+                        <div class="form-group mt-3">
+                            <input type="text" value="{{row_info.email}}" class="form-control" name="email" id="subject" placeholder="email" required>
+                        </div>
+                        
+                        <div class="form-group mt-3">
+                            <input type="text" value="{{row_info.degree}}" class="form-control" name="degree" id="subject" placeholder="degree" required>
+                        </div>
+
+                        <div class="form-group mt-3">
+                            <input type="text" value="{{row_info.city}}" class="form-control" name="city" id="subject" placeholder="city" required>
+                        </div>
+
+                        <div class="form-group mt-3">
+                            <input type="text" value="{{row_info.website}}" class="form-control" name="website" id="subject" placeholder="website" required>
+                        </div>
+                        
+                        <div class="form-group mt-3">
+                            <input type="text" value="{{row_info.title}}" class="form-control" name="title" id="subject" placeholder="title" required>
+                        </div>
+
+                        <div class="form-group mt-3">
+                            <textarea class="form-control" name="summary" rows="10" placeholder="Message">{{row_info.summary}}</textarea>
+                        </div>
+
+                        <div class="form-group mt-3">
+                            <input type="text" value="{{row_info.img}}" name="img_text" class="form-control">
+                        </div>
+                        <div class="form-group mt-3">
+                            <input type="file" class="form-control" name="img" id="subject">
+                        </div>
+                            <button type="submit" class="btn btn-primary mt-3 w-100">Submit</button>
+                        </form>
+                    </div>
+
+                    <div class="col-lg-3 mt-5 mt-lg-0">
+                    </div>
+
+                </div>
+
+            </div>
+        </section><!-- End Contact Section -->
+    </main>
+
+{% endblock content %}
