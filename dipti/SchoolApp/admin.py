@@ -22,6 +22,6 @@ class department_view(admin.ModelAdmin):
         ('Department', {'fields': ['department_name', 'department_head_name']})
     ]
     
-admin.site.register(department,department_view)
+admin.site.register(department_model,department_view)
 admin.site.register(season)
 admin.site.register(add_student)

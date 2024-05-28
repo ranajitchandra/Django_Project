@@ -15,7 +15,7 @@ class custom_user(AbstractUser):
     
     def __str__(self):
         return self.username
-class department(models.Model):
+class department_model(models.Model):
     department_name = models.CharField(max_length=100, null=True)
     department_head_name = models.CharField(max_length=100, null=True)
     create_date_at = models.DateField(auto_now=True, null=True)
@@ -44,7 +44,7 @@ class add_student(models.Model):
     mother_email=models.CharField(max_length=100, null=True)
     present_address=models.CharField(max_length=100, null=True)
     permanent_address=models.CharField(max_length=100, null=True)
-    department_add=models.ForeignKey(department, on_delete=models.DO_NOTHING, null=True)
+    department_add=models.ForeignKey(department_model, on_delete=models.DO_NOTHING, null=True)
     
     
     
@@ -56,7 +56,7 @@ class add_teacher_model(models.Model):
     mobile = models.CharField(max_length=100, null=True)
     Joining_date = models.CharField(max_length=100, null=True)
     edu_qualofy = models.CharField(max_length=100, null=True)
-    experience = models.PositiveIntegerField(max_length=100, null=True)
+    experience = models.PositiveIntegerField(null=True)
     t_username = models.CharField(max_length=100, null=True)
     t_email = models.CharField(max_length=100, null=True)
     password = models.CharField(max_length=100, null=True)

@@ -18,36 +18,25 @@
       <div class="col-sm-12">
          <div class="card">
             <div class="card-body">
-               <form>
+               <form action="{% url 'update_dep' %}" method="POST">
+                  {% csrf_token %}
                   <div class="row">
                      <div class="col-12">
                         <h5 class="form-title"><span>Department Details</span></h5>
                      </div>
                      <div class="col-12 col-sm-6">
                         <div class="form-group">
-                           <label>Department ID</label> <input type="text" class="form-control" value="PRE1534">
+                           <label>Department Name</label>
+                           <input name="dep_id" type="hidden" class="form-control" value="{{get_dep.id}}">
+                           <input name="dep_name" type="text" class="form-control" value="{{get_dep.department_name}}">
                         </div>
                      </div>
                      <div class="col-12 col-sm-6">
                         <div class="form-group">
-                           <label>Department Name</label> <input type="text" class="form-control" value="MCA">
+                           <label>Head of Department</label> <input name="hod" type="text" class="form-control" value="{{get_dep.department_head_name}}">
                         </div>
                      </div>
-                     <div class="col-12 col-sm-6">
-                        <div class="form-group">
-                           <label>Head of Department</label> <input type="text" class="form-control" value="Lois A">
-                        </div>
-                     </div>
-                     <div class="col-12 col-sm-6">
-                        <div class="form-group">
-                           <label>Department Start Date</label> <input type="text" class="form-control" value="1992">
-                        </div>
-                     </div>
-                     <div class="col-12 col-sm-6">
-                        <div class="form-group">
-                           <label>No of Students</label> <input type="text" class="form-control" value="200">
-                        </div>
-                     </div>
+                     
                      <div class="col-12">
                         <button type="submit" class="btn btn-primary">Submit</button>
                      </div>

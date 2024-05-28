@@ -15,8 +15,10 @@ urlpatterns = [
     
     path('students/', students, name='students'),
     path('student_view/', student_view, name='student_view'),
-    path('add_student/', add_student_page, name='add_student'),
-    path('edit_student/', edit_student, name='edit_student'),
+    path('add_student_page/', add_student_page, name='add_student_page'),
+    path('edit_student/<int:std_id>', edit_student, name='edit_student'),
+    path('del_student/<int:std_id>', del_student, name='del_student'),
+    path('update_std/', update_std, name='update_std'),
     
     path('teachers/', teachers, name='teachers'),
     path('teacher_view/', teacher_view, name='teacher_view'),
@@ -25,7 +27,9 @@ urlpatterns = [
     
     path('departments/', departments, name='departments'),
     path('add_department/', add_department, name='add_department'),
-    path('edit_department/', edit_department, name='edit_department'),
+    path('edit_department/<int:dep_id>', edit_department, name='edit_department'),
+    path('update_dep/', update_dep, name='update_dep'),
+    path('delete_department/<int:dep_id>', delete_department, name='delete_department'),
     
     
     path('subjects/', subjects, name='subjects'),

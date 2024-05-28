@@ -30,13 +30,15 @@ def student_dashboard(request):
 
 # student
 def students(request):
-    return render(request, 'student/students.html')
+    std_obj=add_student.objects.all()
+    return render(request, 'student/students.html', {'student': std_obj})
 
 def student_view(request):
+    
     return render(request, 'student/student-details.html')
 
 def add_student_page(request):
-    dep = department.objects.all()
+    dep = department_model.objects.all()
     
     if request.method=="POST":
         f_name=request.POST.get('f_name')
@@ -63,7 +65,7 @@ def add_student_page(request):
         password=request.POST.get('password')
         
         print(dep_id)
-        dept=department.objects.get(id=dep_id)
+        dept=department_model.objects.get(id=dep_id)
         print(dept)
         
         if custom_user.objects.filter(username=s_username).exists():
@@ -105,11 +107,99 @@ def add_student_page(request):
     
     return render(request, 'student/add-student.html',{'departments' : dep})
 
-def edit_student(request):
-    return render(request, 'student/edit-student.html')
+def del_student(request, std_id):
+    del_std=add_student.objects.get(id=std_id)
+    del_std.delete()
+    return redirect('students')
 
+def edit_student(request, std_id):
+    get_std = add_student.objects.get(id=std_id)
+    return render(request, 'student/edit-student.html', {'student':get_std})
 
+def update_std(request):
+    if request.method=="POST":
+        std_id=request.POST.get('std_id')
+        f_name=request.POST.get('f_name')
+        l_name=request.POST.get('l_name')
+        gender=request.POST.get('gender')
+        dob=request.POST.get('dob')
 
+        religion=request.POST.get('religion')
+        Joining_date=request.POST.get('Joining_date')
+        phone=request.POST.get('phone')
+        section=request.POST.get('section')
+
+        stdimg=request.FILES.get('img')
+        pre_img=request.POST.get('pre_img')
+
+        father_name=request.POST.get('father_name')
+        father_occu=request.POST.get('father_occu')
+        father_phone=request.POST.get('father_phone')
+        father_email=request.POST.get('father_email')
+        mother_name=request.POST.get('mother_name')
+        mother_occu=request.POST.get('mother_occu')
+        mother_phone=request.POST.get('mother_phone')
+        mother_email=request.POST.get('mother_email')
+        present_address=request.POST.get('present_address')
+        permanent_address=request.POST.get('permanent_address')
+
+        if stdimg == None:
+            save_std=add_student(
+                id=std_id,
+                img=pre_img,
+                f_name=f_name,
+                l_name=l_name,
+                
+                gender=gender,
+                dob=dob,
+                religion=religion,
+                Joining_date=Joining_date,
+                phone=phone,
+                section=section,
+                father_name=father_name,
+                father_occu=father_occu,
+                father_phone=father_phone,
+                father_email=father_email,
+                mother_name=mother_name,
+                mother_occu=mother_occu,
+                mother_phone=mother_phone,
+                mother_email=mother_email,
+                present_address=present_address,
+                permanent_address=permanent_address,
+            )
+            save_std.save()
+            return redirect('students')
+            
+        else:
+            save_std = add_student(
+            id=std_id,
+            f_name=f_name,
+            l_name=l_name,
+                
+            gender=gender,
+            dob=dob,
+            religion=religion,
+            Joining_date=Joining_date,
+            phone=phone,
+            section=section,
+            img=stdimg,
+            father_name=father_name,
+            father_occu=father_occu,
+            father_phone=father_phone,
+            father_email=father_email,
+            mother_name=mother_name,
+            mother_occu=mother_occu,
+            mother_phone=mother_phone,
+            mother_email=mother_email,
+            present_address=present_address,
+            permanent_address=permanent_address,
+            )
+            save_std.save()
+            return redirect('students')
+
+        
+
+# Tracher
 def teachers(request):
     return render(request, 'teacher/teachers.html')
 
@@ -124,10 +214,11 @@ def edit_teacher(request):
 
 
 
+# Department
 def departments(request):
-    dep_list=department.objects.all()
+    
     dep_data=[]
-    for department in dep_list:
+    for department in department_model.objects.all():
         print(add_student.objects.filter(department_add=department).count())
         std_count=add_student.objects.filter(department_add=department).count()
         dep_data.append(
@@ -144,25 +235,47 @@ def departments(request):
     return render(request, 'department/departments.html', context)
 
 def add_department(request):
-    
+
     if request.method=="POST":
         dep_name =request.POST.get('dep_name')
         dep_head =request.POST.get('dep_head')
-        if department.objects.filter(department_name=dep_name).exists():
-            
+        if department_model.objects.filter(department_name=dep_name).exists():
+            pass
             return redirect('add_department')
         else:
-            save_dep = department(
+            save_dep = department_model(
                 department_name=dep_name,
                 department_head_name=dep_head,
             )
             save_dep.save()
-            messages.warning('Department Add Successfull')
+            
             return redirect('departments')
     return render(request, 'department/add-department.html')
 
-def edit_department(request):
-    return render(request, 'department/edit-department.html')
+def delete_department(request, dep_id):
+    del_dep=department_model.objects.get(id=dep_id)
+    del_dep.delete()
+    return redirect('departments')
+
+
+
+def edit_department(request, dep_id):
+    dep_get=department_model.objects.get(id=dep_id)
+    return render(request, 'department/edit-department.html',{'get_dep' : dep_get})
+
+def update_dep(request):
+    if request.method=="POST":
+        dep_id=request.POST.get('dep_id')
+        dep_name=request.POST.get('dep_name')
+        hod=request.POST.get('hod')
+        save_dep=department_model(
+            id=dep_id,
+            department_name=dep_name,
+            department_head_name=hod,
+        )
+        save_dep.save()
+        return redirect('departments')
+
 
 
 
@@ -172,7 +285,7 @@ def subjects(request):
     return render(request, 'subject/subjects.html')
 
 def add_subject(request):
-    dep = department.objects.all()
+    dep = department_model.objects.all()
     
     return render(request, 'subject/add-subject.html',{'departments' : dep})
     
@@ -182,7 +295,7 @@ def edit_subject(request):
 
 
 
-#department
+#Account Management
 
 def fees_collections(request):
     return render(request, 'accounts/fees-collections.html')
