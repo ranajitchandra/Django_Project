@@ -41,7 +41,6 @@ def add_student_page(request):
     if request.method=="POST":
         f_name=request.POST.get('f_name')
         l_name=request.POST.get('l_name')
-        std_id=request.POST.get('std_id')
         gender=request.POST.get('gender')
         dob=request.POST.get('dob')
         religion=request.POST.get('religion')
@@ -60,31 +59,48 @@ def add_student_page(request):
         present_address=request.POST.get('present_address')
         permanent_address=request.POST.get('permanent_address')
         dep_id=request.POST.get('dep')
+        s_username=request.POST.get('s_username')
+        password=request.POST.get('password')
         
-        save_std = add_student(
-            f_name=f_name,
-            l_name=l_name,
-            std_id=std_id,
-            gender=gender,
-            dob=dob,
-            religion=religion,
-            Joining_date=Joining_date,
-            phone=phone,
-            section=section,
-            img=img,
-            father_name=father_name,
-            father_occu=father_occu,
-            father_phone=father_phone,
-            father_email=father_email,
-            mother_name=mother_name,
-            mother_occu=mother_occu,
-            mother_phone=mother_phone,
-            mother_email=mother_email,
-            present_address=present_address,
-            permanent_address=permanent_address,
-            department_add=dep_id,
-        )
-        save_std.save()
+        print(dep_id)
+        dept=department.objects.get(id=dep_id)
+        print(dept)
+        
+        if custom_user.objects.filter(username=s_username).exists():
+            pass
+        else:
+            std_custom=custom_user.objects.create_user(
+                username=s_username,
+                password=password,
+                user_type='3',
+            )
+            std_custom.save()
+        
+            save_std = add_student.objects.create(
+                user=std_custom,
+                f_name=f_name,
+                l_name=l_name,
+                std_id=s_username,
+                gender=gender,
+                dob=dob,
+                religion=religion,
+                Joining_date=Joining_date,
+                phone=phone,
+                section=section,
+                img=img,
+                father_name=father_name,
+                father_occu=father_occu,
+                father_phone=father_phone,
+                father_email=father_email,
+                mother_name=mother_name,
+                mother_occu=mother_occu,
+                mother_phone=mother_phone,
+                mother_email=mother_email,
+                present_address=present_address,
+                permanent_address=permanent_address,
+                department_add=dept,
+            )
+            save_std.save()
         return redirect('students')
     
     return render(request, 'student/add-student.html',{'departments' : dep})
