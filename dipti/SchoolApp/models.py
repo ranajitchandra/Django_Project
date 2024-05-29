@@ -50,21 +50,19 @@ class add_student(models.Model):
     
 
 class add_teacher_model(models.Model):
-    teacher_id = models.CharField(max_length=100, null=True)
     teacher_name = models.CharField(max_length=100, null=True)
     gender = models.CharField(max_length=100, null=True)
     mobile = models.CharField(max_length=100, null=True)
     Joining_date = models.CharField(max_length=100, null=True)
-    edu_qualofy = models.CharField(max_length=100, null=True)
+    edu_qualify = models.CharField(max_length=100, null=True)
     experience = models.PositiveIntegerField(null=True)
-    t_username = models.CharField(max_length=100, null=True)
-    t_email = models.CharField(max_length=100, null=True)
-    password = models.CharField(max_length=100, null=True)
     present_address = models.CharField(max_length=100, null=True)
     permanent_address = models.CharField(max_length=100, null=True)
     t_img = models.ImageField(upload_to="static/media/teacher_pic", null=True)
+    user=models.OneToOneField(custom_user, on_delete=models.CASCADE, null=True)
+    dep_obj_add=models.ForeignKey(department_model, on_delete=models.DO_NOTHING, null=True)
 
-
+    
 
 
     

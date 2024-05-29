@@ -201,13 +201,58 @@ def update_std(request):
 
 # Tracher
 def teachers(request):
-    return render(request, 'teacher/teachers.html')
+    teacher_list=add_teacher_model.objects.all()
+    return render(request, 'teacher/teachers.html',{'view_teacher':teacher_list})
 
 def teacher_view(request):
     return render(request, 'teacher/teacher-details.html')
 
 def add_teacher(request):
-    return render(request, 'teacher/add-teacher.html')
+    if request.method=="POST":
+        teacher_name = request.POST.get('teacher_name')
+        gender = request.POST.get('gender')
+        mobile = request.POST.get('mobile')
+        Joining_date = request.POST.get('Joining_date')
+        edu_qualify = request.POST.get('edu_qualify')
+        experience = request.POST.get('experience')
+        present_address = request.POST.get('present_address')
+        permanent_address = request.POST.get('permanent_address')
+        t_img = request.FILES.get('t_img')
+        
+        dep_id = request.POST.get('dep')
+        t_username = request.POST.get('t_username')
+        t_email = request.POST.get('t_email')
+        password = request.POST.get('password')
+        
+        if custom_user.objects.filter(username=t_username).exists():
+            pass
+        else:
+            add_teacher_user = custom_user.objects.create_user(
+                username = t_username,
+                email = t_email,
+                password = password,
+                user_type= '2',
+            )
+            add_teacher_user.save()
+            
+            add_teacher_data =add_teacher_model(
+                teacher_name = teacher_name,
+                gender = gender,
+                mobile = mobile,
+                Joining_date = Joining_date,
+                edu_qualify = edu_qualify,
+                experience = experience,
+                present_address = present_address,
+                permanent_address = permanent_address,
+                t_img = t_img,
+                user = add_teacher_user,
+                dep_obj_add= department_model.objects.get(id=dep_id)
+            )
+            add_teacher_data.save()
+            return redirect('teachers')
+            
+        
+    return render(request, 'teacher/add-teacher.html', {'departments': department_model.objects.all()})
 
 def edit_teacher(request):
     return render(request, 'teacher/edit-teacher.html')
@@ -217,20 +262,23 @@ def edit_teacher(request):
 # Department
 def departments(request):
     
-    dep_data=[]
+    std_data=[]
     for department in department_model.objects.all():
-        print(add_student.objects.filter(department_add=department).count())
+        # print(add_student.objects.filter(department_add=department).count())
         std_count=add_student.objects.filter(department_add=department).count()
-        dep_data.append(
+        teacher_count=add_teacher_model.objects.filter(dep_obj_add=department).count()
+        print(add_teacher_model.objects.filter(dep_obj_add=department).count())
+        std_data.append(
             {
                 "Total_student" : std_count,
+                "Total_teacher" : teacher_count,
                 "Department_name" : department.department_name,
                 "HOD" : department.department_head_name,
                 "ID" : department.id,
             }
         )
         context={
-            'department_list': dep_data
+            'department_list': std_data,
         }
     return render(request, 'department/departments.html', context)
 

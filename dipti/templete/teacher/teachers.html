@@ -45,68 +45,42 @@
                            <table class="table table-hover table-center mb-0 datatable dataTable no-footer" id="DataTables_Table_0" role="grid" aria-describedby="DataTables_Table_0_info">
                               <thead>
                                  <tr role="row">
-                                    <th class="sorting_asc" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-sort="ascending" aria-label="ID: activate to sort column descending" style="width: 49.3281px;">ID</th>
-                                    <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Name: activate to sort column ascending" style="width: 182.422px;">Name</th>
-                                    <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Class: activate to sort column ascending" style="width: 45.0312px;">Class</th>
+                                    <th class="sorting_asc" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-sort="ascending" aria-label="ID: activate to sort column descending" style="width: 49.3281px;">Name</th>
+                                    <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Name: activate to sort column ascending" style="width: 182.422px;">Image</th>
+                                    <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Class: activate to sort column ascending" style="width: 45.0312px;">Phone</th>
                                     <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Gender: activate to sort column ascending" style="width: 59.9219px;">Gender</th>
-                                    <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Subject: activate to sort column ascending" style="width: 88.9688px;">Subject</th>
-                                    <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Section: activate to sort column ascending" style="width: 60.7031px;">Section</th>
-                                    <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Mobile Number: activate to sort column ascending" style="width: 124.312px;">Mobile Number</th>
-                                    <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Address: activate to sort column ascending" style="width: 338.578px;">Address</th>
+                                    <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Subject: activate to sort column ascending" style="width: 88.9688px;">date of Bird</th>
+                                    <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Section: activate to sort column ascending" style="width: 60.7031px;">Education</th>
+                                    <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Mobile Number: activate to sort column ascending" style="width: 124.312px;">Address</th>
                                     <th class="text-right sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Action: activate to sort column ascending" style="width: 74.4219px;">Action</th>
                                  </tr>
                               </thead>
                               <tbody>
+                                 {% for teacher in view_teacher %}
                                  <tr role="row" class="odd">
-                                    <td class="sorting_1">PRE1234</td>
+                                    <td class="sorting_1">{{teacher.teacher_name}}</td>
                                     <td>
                                        <h2 class="table-avatar">
-                                          <a href="teacher-details.html" class="avatar avatar-sm mr-2"><img class="avatar-img rounded-circle" src="#" alt="Image"></a>
-                                          <a href="teacher-details.html">Nathan Humphries</a>
+                                          <a href="#" class="avatar avatar-sm mr-2"><img class="avatar-img rounded-circle" src="/{{teacher.t_img}}" alt="Image"></a>
                                        </h2>
                                     </td>
-                                    <td>10</td>
-                                    <td>Male</td>
-                                    <td>Biology</td>
-                                    <td>A</td>
-                                    <td>077 3499 9959</td>
-                                    <td>86 Lamphey Road, Thelnetham</td>
+                                    <td>{{teacher.mobile}}</td>
+                                    <td>{{teacher.gender}}</td>
+                                    <td>{{teacher.Joining_date}}</td>
+                                    <td>{{teacher.edu_qualify}}</td>
+                                    <td>{{teacher.permanent_address}}</td>
                                     <td class="text-right">
                                        <div class="actions">
                                           <a href="edit-teacher.html" class="btn btn-sm bg-success-light mr-2">
-                                          <i class="fas fa-pen"></i>
+                                             <i class="fas fa-pen"></i>
                                           </a>
                                           <a href="#" class="btn btn-sm bg-danger-light">
-                                          <i class="fas fa-trash"></i>
+                                             <i class="fas fa-trash"></i>
                                           </a>
                                        </div>
                                     </td>
                                  </tr>
-                                 <tr role="row" class="even">
-                                    <td class="sorting_1">PRE1434</td>
-                                    <td>
-                                       <h2 class="table-avatar">
-                                          <a href="teacher-details.html" class="avatar avatar-sm mr-2"><img class="avatar-img rounded-circle" src="#" alt="Image"></a>
-                                          <a href="teacher-details.html">Vincent</a>
-                                       </h2>
-                                    </td>
-                                    <td>10</td>
-                                    <td>Male</td>
-                                    <td>Mathematics</td>
-                                    <td>C</td>
-                                    <td>402 221 7523</td>
-                                    <td>3979 Ashwood Drive, Omaha</td>
-                                    <td class="text-right">
-                                       <div class="actions">
-                                          <a href="edit-teacher.html" class="btn btn-sm bg-success-light mr-2">
-                                          <i class="fas fa-pen"></i>
-                                          </a>
-                                          <a href="#" class="btn btn-sm bg-danger-light">
-                                          <i class="fas fa-trash"></i>
-                                          </a>
-                                       </div>
-                                    </td>
-                                 </tr>
+                                 {% endfor %}
                               </tbody>
                            </table>
                         </div>

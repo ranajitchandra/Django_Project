@@ -25,3 +25,4 @@ class department_view(admin.ModelAdmin):
 admin.site.register(department_model,department_view)
 admin.site.register(season)
 admin.site.register(add_student)
+admin.site.register(add_teacher_model)
