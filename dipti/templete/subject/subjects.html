@@ -45,144 +45,36 @@
                               <thead>
                                  <tr role="row">
                                     <th class="sorting_asc" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-sort="ascending" aria-label="ID: activate to sort column descending" style="width: 165.062px;">ID</th>
+                                    <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Class: activate to sort column ascending" style="width: 142.797px;">Subject Code</th>
                                     <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Name: activate to sort column ascending" style="width: 236.094px;">Name</th>
-                                    <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Class: activate to sort column ascending" style="width: 142.797px;">Class</th>
+                                    <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Name: activate to sort column ascending" style="width: 236.094px;">Department</th>
                                     <th class="text-right sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Action: activate to sort column ascending" style="width: 199.047px;">Action</th>
                                  </tr>
                               </thead>
                               <tbody>
+                                 {% for subject in subjects %}
                                  <tr role="row" class="odd">
-                                    <td class="sorting_1">PRE1534</td>
-                                    <td>
-                                       <h2>
-                                          <a>Botony</a>
-                                       </h2>
-                                    </td>
-                                    <td>9</td>
+                                    <td class="sorting_1">{{subject.id}}</td>
+                                    <td>{{subject.subject_code}}</td>
+                                    <td>{{subject.subject_name}}</td>
+                                    <td>{{subject.subject_add_dep.department_name}}</td>
                                     <td class="text-right">
                                        <div class="actions">
-                                          <a href="edit-subject.html" class="btn btn-sm bg-success-light mr-2">
+                                          <a href="#" class="btn btn-sm bg-success-light mr-2">
                                           <i class="fas fa-pen"></i>
                                           </a>
-                                          <a href="#" class="btn btn-sm bg-danger-light">
+                                          <a href="{% url 'delete_subject' subject.id %}" class="btn btn-sm bg-danger-light">
                                           <i class="fas fa-trash"></i>
                                           </a>
                                        </div>
                                     </td>
                                  </tr>
-                                 <tr role="row" class="even">
-                                    <td class="sorting_1">PRE2143</td>
-                                    <td>
-                                       <h2>
-                                          <a>Science</a>
-                                       </h2>
-                                    </td>
-                                    <td>3</td>
-                                    <td class="text-right">
-                                       <div class="actions">
-                                          <a href="edit-subject.html" class="btn btn-sm bg-success-light mr-2">
-                                          <i class="fas fa-pen"></i>
-                                          </a>
-                                          <a href="#" class="btn btn-sm bg-danger-light">
-                                          <i class="fas fa-trash"></i>
-                                          </a>
-                                       </div>
-                                    </td>
-                                 </tr>
-                                 <tr role="row" class="odd">
-                                    <td class="sorting_1">PRE2153</td>
-                                    <td>
-                                       <h2>
-                                          <a>English</a>
-                                       </h2>
-                                    </td>
-                                    <td>4</td>
-                                    <td class="text-right">
-                                       <div class="actions">
-                                          <a href="edit-subject.html" class="btn btn-sm bg-success-light mr-2">
-                                          <i class="fas fa-pen"></i>
-                                          </a>
-                                          <a href="#" class="btn btn-sm bg-danger-light">
-                                          <i class="fas fa-trash"></i>
-                                          </a>
-                                       </div>
-                                    </td>
-                                 </tr>
-                                 <tr role="row" class="even">
-                                    <td class="sorting_1">PRE2209</td>
-                                    <td>
-                                       <h2>
-                                          <a>Mathematics</a>
-                                       </h2>
-                                    </td>
-                                    <td>5</td>
-                                    <td class="text-right">
-                                       <div class="actions">
-                                          <a href="edit-subject.html" class="btn btn-sm bg-success-light mr-2">
-                                          <i class="fas fa-pen"></i>
-                                          </a>
-                                          <a href="#" class="btn btn-sm bg-danger-light">
-                                          <i class="fas fa-trash"></i>
-                                          </a>
-                                       </div>
-                                    </td>
-                                 </tr>
-                                 <tr role="row" class="odd">
-                                    <td class="sorting_1">PRE2213</td>
-                                    <td>
-                                       <h2>
-                                          <a>History</a>
-                                       </h2>
-                                    </td>
-                                    <td>6</td>
-                                    <td class="text-right">
-                                       <div class="actions">
-                                          <a href="edit-subject.html" class="btn btn-sm bg-success-light mr-2">
-                                          <i class="fas fa-pen"></i>
-                                          </a>
-                                          <a href="#" class="btn btn-sm bg-danger-light">
-                                          <i class="fas fa-trash"></i>
-                                          </a>
-                                       </div>
-                                    </td>
-                                 </tr>
-                                 <tr role="row" class="even">
-                                    <td class="sorting_1">PRE2431</td>
-                                    <td>
-                                       <h2>
-                                          <a>Geography</a>
-                                       </h2>
-                                    </td>
-                                    <td>8</td>
-                                    <td class="text-right">
-                                       <div class="actions">
-                                          <a href="edit-subject.html" class="btn btn-sm bg-success-light mr-2">
-                                          <i class="fas fa-pen"></i>
-                                          </a>
-                                          <a href="#" class="btn btn-sm bg-danger-light">
-                                          <i class="fas fa-trash"></i>
-                                          </a>
-                                       </div>
-                                    </td>
-                                 </tr>
+                                 {% endfor %}
                               </tbody>
                            </table>
                         </div>
                      </div>
-                     <div class="row">
-                        <div class="col-sm-12 col-md-5">
-                           <div class="dataTables_info" id="DataTables_Table_0_info" role="status" aria-live="polite">Showing 1 to 6 of 6 entries</div>
-                        </div>
-                        <div class="col-sm-12 col-md-7">
-                           <div class="dataTables_paginate paging_simple_numbers" id="DataTables_Table_0_paginate">
-                              <ul class="pagination">
-                                 <li class="paginate_button page-item previous disabled" id="DataTables_Table_0_previous"><a href="#" aria-controls="DataTables_Table_0" data-dt-idx="0" tabindex="0" class="page-link">Previous</a></li>
-                                 <li class="paginate_button page-item active"><a href="#" aria-controls="DataTables_Table_0" data-dt-idx="1" tabindex="0" class="page-link">1</a></li>
-                                 <li class="paginate_button page-item next disabled" id="DataTables_Table_0_next"><a href="#" aria-controls="DataTables_Table_0" data-dt-idx="2" tabindex="0" class="page-link">Next</a></li>
-                              </ul>
-                           </div>
-                        </div>
-                     </div>
+                     
                   </div>
                </div>
             </div>

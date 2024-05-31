@@ -267,11 +267,13 @@ def departments(request):
         # print(add_student.objects.filter(department_add=department).count())
         std_count=add_student.objects.filter(department_add=department).count()
         teacher_count=add_teacher_model.objects.filter(dep_obj_add=department).count()
+        subject_count=subject_model.objects.filter(subject_add_dep=department).count()
         print(add_teacher_model.objects.filter(dep_obj_add=department).count())
         std_data.append(
             {
                 "Total_student" : std_count,
                 "Total_teacher" : teacher_count,
+                "Total_subject" : subject_count,
                 "Department_name" : department.department_name,
                 "HOD" : department.department_head_name,
                 "ID" : department.id,
@@ -311,6 +313,7 @@ def edit_department(request, dep_id):
     dep_get=department_model.objects.get(id=dep_id)
     return render(request, 'department/edit-department.html',{'get_dep' : dep_get})
 
+
 def update_dep(request):
     if request.method=="POST":
         dep_id=request.POST.get('dep_id')
@@ -330,12 +333,30 @@ def update_dep(request):
 # Subject
 
 def subjects(request):
-    return render(request, 'subject/subjects.html')
+    
+    return render(request, 'subject/subjects.html', {'subjects': subject_model.objects.all()})
 
 def add_subject(request):
-    dep = department_model.objects.all()
+    deppartments = department_model.objects.all()
     
-    return render(request, 'subject/add-subject.html',{'departments' : dep})
+    if request.method=="POST":
+        sub_code = request.POST.get('sub_code')
+        sub_name = request.POST.get('sub_name')
+        dep = request.POST.get('dep')
+        dep_inc= department_model.objects.get(id=dep)
+        save_subject=subject_model(
+            subject_code = sub_code,
+            subject_name = sub_name,
+            subject_add_dep = dep_inc,
+        )
+        save_subject.save()
+        return redirect('subjects')
+    return render(request, 'subject/add-subject.html',{'departments' : deppartments})
+
+def delete_subject(request, sub_id):
+    del_sub=subject_model.objects.get(id=sub_id)
+    del_sub.delete()
+    return redirect('subjects')
     
 def edit_subject(request):
     return render(request, 'subject/edit-subject.html')

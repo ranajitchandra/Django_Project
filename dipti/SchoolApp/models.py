@@ -46,8 +46,7 @@ class add_student(models.Model):
     permanent_address=models.CharField(max_length=100, null=True)
     department_add=models.ForeignKey(department_model, on_delete=models.DO_NOTHING, null=True)
     
-    
-    
+
 
 class add_teacher_model(models.Model):
     teacher_name = models.CharField(max_length=100, null=True)
@@ -63,9 +62,10 @@ class add_teacher_model(models.Model):
     dep_obj_add=models.ForeignKey(department_model, on_delete=models.DO_NOTHING, null=True)
 
     
-
-
-    
+class subject_model(models.Model):
+    subject_code = models.IntegerField(null=True)
+    subject_name = models.CharField(max_length=20, null=True)
+    subject_add_dep = models.ForeignKey(department_model, on_delete=models.DO_NOTHING, max_length=20, null=True)
 
     
 class season(models.Model):
