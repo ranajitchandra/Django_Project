@@ -1,11 +1,10 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from jobApp.models import *
-from django.contrib.auth import login, logout, authenticate
+from django.contrib.auth import login, logout, authenticate, update_session_auth_hash
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.contrib.auth.hashers import check_password
-from django.contrib.auth import update_session_auth_hash
-
+from django.db.models import Q
 # Create your views here.
 
 context={
@@ -142,6 +141,53 @@ def view_job(request):
     return render(request, 'view_job.html', {'row' : get_job})
 
 
+
+@login_required
+def view_job_apply(request):
+    
+    get_job = add_job.objects.all()
+    
+    return render(request, 'view_job_apply.html', {'row' : get_job})
+
+@login_required
+def seeker_job_apply(request, job_id):
+    
+    job = get_object_or_404(add_job, id=job_id)
+    current_user = request.user
+    already_applied = apply_job_model.objects.filter(for_job= job, applicant=current_user).exists()
+
+    if already_applied:
+        messages.success(request, "Already Applied")
+        return redirect('view_job_apply')
+    
+    if request.method=="POST":
+        skill = request.POST.get('skill')
+        qualifications = request.POST.get('qualification')
+        profile = request.FILES.get('profile')
+        resume = request.FILES.get('resume')
+        
+        print(skill,qualifications,profile,resume)
+        if skill and qualifications and profile and resume:
+            app=current_user
+
+            application = apply_job_model(
+                skills = skill,
+                qualification = qualifications,
+                profile_pic = profile,
+                resume = resume,
+                applicant = app,
+                for_job = job,
+            )
+            application.save()
+            return redirect('view_job_apply')
+    else:
+        context = {
+            'jobView' : job
+        }
+        return render(request, 'seeker_job_apply.html', context)
+
+
+
 @login_required
 def delete_data(request, job_id):
     get_job = add_job.objects.get(id = job_id)
@@ -202,9 +248,64 @@ def update_profile(request):
         
         
 
-def applied_job(request):
+def applied_job_by_seeker(request):
+    
+    applied_obj = apply_job_model.objects.filter(applicant=request.user)
+    
+    return render(request, 'applied_job_by_seeker.html', {'applied_job':applied_obj})
 
-    return render(request, 'applied_job.html')
+
+
+
+def posted_job_by_recruiter(request):
+    current_user = request.user
+    
+    post_obj = add_job.objects.filter(created_by=current_user)
+    
+    return render(request, 'posted_job_by_recruiter.html', {'get_post':post_obj})
+
+
+def see_applicant(request, myid):
+    get_job = get_object_or_404(add_job, id=myid)
+    applicant = apply_job_model.objects.filter(for_job=get_job)
+    context = {
+        'job': get_job,
+        'applicant': applicant,
+    }
+    
+    return render(request, 'see_applicant.html', context)
+
+def  reject_application(request, myid):
+    applicant = get_object_or_404(apply_job_model, id=myid)
+    applicant.status="Rejected"
+    applicant.save()
+    messages.success(request, "Reject Successfull")
+    return redirect('see_applicant', myid=applicant.for_job.id)  
+
+def interviewCall(request, myid):
+    interviewdata= get_object_or_404(apply_job_model, id=myid)
+    
+    interviewdata.status = 'Approved'
+    interviewdata.save()
+    return redirect('see_applicant', myid=interviewdata.for_job.id)  
+
+
+def seach_page(request):
+    query = request.GET.get('search')
+    search = add_job.objects.filter(
+        Q(job_title__icontains= query) |
+        Q(company_name__icontains= query) |
+        Q(company_des__icontains= query) |
+        Q(address__icontains= query) |
+        Q(salary__icontains= query) |
+        Q(created_by__username__icontains= query) 
+        )
+    context={
+        'query' : query,
+        'search' : search,
+    }
+
+    return render(request, 'seach_page.html', context)
 
 
 def basic_info(request):
@@ -236,5 +337,4 @@ def update_pass(request):
                 messages.success(request, context['pass_update'])
                 return redirect('profile')
                 
-    
     return render(request, 'change_pass.html')

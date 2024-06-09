@@ -18,6 +18,24 @@
          {% include "inc/header.html" %}
          {% include "inc/sidebar_menu.html" %}
          <div class="page-wrapper">
+            {% if messages %}
+               {% for msg in messages %}
+                     {% if msg.tags   == 'success' %}
+                        <script>
+                           alert("{{msg}}");
+                        </script>
+                     {% elif msg.tags   == 'warning' %}
+                     <script>
+                        alert("{{msg}}");
+                     </script>
+                     {% elif msg.tags   == 'error' %}
+                     <script>
+                        alert("{{msg}}");
+                     </script>
+                     {% endif %}
+               {% endfor %}
+            {% endif %}
+            
             {% block content %}
             
             {% endblock content %}

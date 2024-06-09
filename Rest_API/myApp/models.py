@@ -11,3 +11,15 @@ class student(models.Model):
         return self.name + " " + self.dep
 
 
+
+class teacher(models.Model):
+    name= models.CharField(max_length=100, null=True)
+    address= models.CharField(max_length=100, null=True)
+    salary= models.CharField(max_length=100, null=True)
+    
+    
+class employee(models.Model):
+    name = models.CharField(max_length=100, null=True)
+    emp_id = models.CharField(max_length=100, null=True)
+    email = models.EmailField(max_length=100, null=True)
+    phone = models.IntegerField( null=True)

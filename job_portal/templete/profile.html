@@ -76,13 +76,13 @@
                                         <p class="text-muted font-size-sm">Panthapath, Dhaka</p>
                                         {% if user.user_type == 'recruiter' %}
                                         <a href="{% url 'edit_profile' %}" class="btn btn-success">Edit</a>
-                                        <a href="#" class="btn btn-success">Posted Job</a>
+                                        <a href="{% url 'posted_by_recruiter' %}" class="btn btn-success">Posted Job</a>
                                         <a href="{% url 'basic_info' %}" class="btn btn-success">Basic Info</a>
-                                        <a style="margin-top: 15px;" href="{% url 'change_pass' %}" class="btn btn-success">Change password</a>
                                         <a href="#" class="btn btn-success">Contact</a>
+                                        <a style="margin-top: 15px;" href="{% url 'change_pass' %}" class="btn btn-success">Change password</a>
                                         {% elif user.user_type == 'jobseeker' %}
                                         <a href="{% url 'edit_profile' %}" class="btn btn-success">Edit</a>
-                                        <a href="{% url 'applied_job' %}" class="btn btn-success">Work Exp</a>
+                                        <a href="{% url 'applied_job_by_seeker' %}" class="btn btn-success">Applied Job</a>
                                         <a href="{% url 'education' %}" class="btn btn-success">Education</a>
                                         <a href="{% url 'basic_info' %}" class="btn btn-success">Basic Info</a>
                                         <a href="{% url 'basic_info' %}" class="btn btn-success">Contact</a>

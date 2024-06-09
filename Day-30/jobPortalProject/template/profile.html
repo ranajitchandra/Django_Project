@@ -1,0 +1,116 @@
+{% extends 'index.html' %}
+
+{% block content %}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        .profile-picture {
+            display: block;
+            margin: 0 auto 20px;
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+        .field {
+            margin-bottom: 15px;
+        }
+        label {
+            font-weight: bold;
+        }
+        p {
+            margin: 0;
+        }
+
+        .button {
+        background-color: #04AA6D; /* Green */
+        border: none;
+        color: white;
+        padding: 15px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        }
+
+        
+
+
+        .button2 {background-color: #008CBA;} /* Blue */
+        .button3 {background-color: #f44336;} /* Red */ 
+        .button4 {background-color: #e7e7e7; color: black;} /* Gray */ 
+        .button5 {background-color: #555555;} /* Black */
+
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>{{user.first_name}} {{user.last_name}}</h1>
+        <img class="profile-picture" src="/{{user.profile_picture}}" alt="Profile Picture">
+        <br>
+        <br>
+
+        <button class="button"><a href=" {% url 'editProfilePage' %} ">Edit Profile</a></button>
+
+        {% if user.user_type == 'recruiter' %}
+            
+        <button class="button button3"><a href=" {% url 'jobPosterbyRecruiter' %} ">Posted Job</a></button>
+
+        {% elif  user.user_type == 'seeker' %}
+        
+        <button class="button button2"><a href=" {% url 'appliedjobbySeeker' %} ">Applied Job</a></button>
+        <button class="button button2"><a href=" {% url 'BasicInformation' %} ">Basic Information</a></button>
+        <button class="button button2"><a href=" {% url 'EducationQualification' %} ">Education Qualification</a></button>
+        <br>
+        <br>
+        <button class="button button2"><a href="">Work Experience</a></button>
+        <button class="button button2"><a href="">Contact</a></button>
+
+      
+        {% endif %}
+          
+        <button class="button button2"><a href=" {% url 'changePasswordPage' %} ">Change Password</a></button>
+
+            
+        <br>
+        <br>
+        <div>
+            
+            {% block basicinformation %}
+
+
+                
+            {% endblock basicinformation %}
+       
+    </div>
+</body>
+</html>
+
+
+{% endblock content %}
+    

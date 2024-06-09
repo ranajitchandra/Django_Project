@@ -7,7 +7,17 @@ from django.contrib import messages
 
 # Create your views here.
 
-
+context={
+        'acc_succes' : 'Admin Account Create Successfull',
+        'pass_wrong' : 'Password not match',
+        'User_login' : 'Login Successfull',
+        'save_data' : 'Data Added',
+        'update' : 'Updated',
+        'pass_update' : 'Password Updated',
+        'logout_message' : 'Logout Successfull',
+        'delete_message' : 'Delete Successfull',
+        'date_exists' : 'Date Exists',
+    }
 
 def base(request):
     return render(request, 'base.html')
@@ -110,6 +120,7 @@ def add_student_page(request):
 def del_student(request, std_id):
     del_std=add_student.objects.get(id=std_id)
     del_std.delete()
+    messages.success(request, context['delete_message'])
     return redirect('students')
 
 def edit_student(request, std_id):
@@ -195,6 +206,7 @@ def update_std(request):
             permanent_address=permanent_address,
             )
             save_std.save()
+            messages.success(request, context['save_data'])
             return redirect('students')
 
         
@@ -249,9 +261,8 @@ def add_teacher(request):
                 dep_obj_add= department_model.objects.get(id=dep_id)
             )
             add_teacher_data.save()
+            messages.success(request, context['save_data'])
             return redirect('teachers')
-            
-        
     return render(request, 'teacher/add-teacher.html', {'departments': department_model.objects.all()})
 
 def edit_teacher(request):
@@ -290,7 +301,7 @@ def add_department(request):
         dep_name =request.POST.get('dep_name')
         dep_head =request.POST.get('dep_head')
         if department_model.objects.filter(department_name=dep_name).exists():
-            pass
+            messages.warning(request, context['date_exists'])
             return redirect('add_department')
         else:
             save_dep = department_model(
@@ -298,13 +309,14 @@ def add_department(request):
                 department_head_name=dep_head,
             )
             save_dep.save()
-            
+            messages.success(request, context['save_data'])
             return redirect('departments')
     return render(request, 'department/add-department.html')
 
 def delete_department(request, dep_id):
     del_dep=department_model.objects.get(id=dep_id)
     del_dep.delete()
+    messages.success(request, context['delete_message'])
     return redirect('departments')
 
 
@@ -325,6 +337,7 @@ def update_dep(request):
             department_head_name=hod,
         )
         save_dep.save()
+        messages.success(request, context['update'])
         return redirect('departments')
 
 
@@ -350,12 +363,14 @@ def add_subject(request):
             subject_add_dep = dep_inc,
         )
         save_subject.save()
+        messages.success(request, context['save_data'])
         return redirect('subjects')
     return render(request, 'subject/add-subject.html',{'departments' : deppartments})
 
 def delete_subject(request, sub_id):
     del_sub=subject_model.objects.get(id=sub_id)
     del_sub.delete()
+    messages.success(request, context['delete_message'])
     return redirect('subjects')
     
 def edit_subject(request):
@@ -412,12 +427,16 @@ def loginPage(request):
         if user_login is not None:
             login(request, user_login)
             if request.user.user_type=='1':
+                messages.success(request, context['User_login'])
                 return redirect('admin_dashboard')
             elif request.user.user_type=='2':
+                messages.success(request, context['User_login'])
                 return redirect('teacher_dashboard')
             elif request.user.user_type=='3':
+                messages.success(request, context['User_login'])
                 return redirect('student_dashboard')
             else:
+                messages.error(request, context['pass_wrong'])
                 return redirect('loginPage')
             
     return render(request, 'login.html')
@@ -436,11 +455,15 @@ def signupPage(request):
             user.email=email
             user.user_type="1"
             user.save()
+            messages.success(request, context['acc_succes'])
             return redirect("index")
         else:
+            messages.warning(request, context['pass_wrong'])
             return redirect("signupPage")
+        
     return render(request, 'register.html')
 
 def logout_page(request):
     logout(request)
+    messages.success(request, context['logout_message'])
     return redirect("loginPage")

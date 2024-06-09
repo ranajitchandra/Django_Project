@@ -1,0 +1,107 @@
+{% extends 'index.html' %}
+
+{% block content %}
+
+<html>
+
+<head>
+
+    <style>
+        .job-application-form {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+}
+
+.job-application-form h2 {
+    text-align: center;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    font-weight: bold;
+}
+
+input[type="text"],
+input[type="file"],
+textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+textarea {
+    resize: vertical;
+}
+
+button[type="submit"] {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+    </style>
+
+</head>
+
+<body>
+    
+
+<div class="job-application-form">
+    
+    <h2>Application for the position of {{job.job_titel}}</h2>
+
+    
+    {% if already_applied %}
+
+    <p>You have already applied for this job</p>
+
+    {% else %}
+    
+    <form action=" " method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="skills">Skills:</label>
+            <input type="text" id="skills" name="skills" required>
+        </div>
+        <div class="form-group">
+            <label for="resume">Resume:</label>
+            <input type="file" id="resume" name="resume" accept=".pdf,.doc,.docx" required>
+        </div>
+        <div class="form-group">
+            <label for="picture">Picture:</label>
+            <input type="file" id="picture" name="picture" accept="image/*" required>
+        </div>
+        <div class="form-group">
+            <label for="qualifications">Qualifications:</label>
+            <textarea id="qualifications" name="qualifications" rows="4" required></textarea>
+        </div>
+        <button type="submit">Submit Application</button>
+    </form>
+        
+    {% endif %}
+        
+
+</div>
+
+</body>
+</html>
+{% endblock content %}

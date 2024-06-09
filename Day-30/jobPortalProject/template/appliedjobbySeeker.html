@@ -1,0 +1,84 @@
+{% extends 'profile.html' %}
+
+
+{% block basicinformation %}
+
+
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+#customers {
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#customers td, #customers th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#customers tr:nth-child(even){background-color: #f2f2f2;}
+
+#customers tr:hover {background-color: #ddd;}
+
+#customers th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #04AA6D;
+  color: white;
+}
+</style>
+</head>
+<body>
+
+<h1>All Applied Job</h1>
+
+<table id="customers">
+
+  
+    
+    
+  <tr>
+    <th>Username</th>
+    <th>Job Title</th>
+    <th>Qualification</th>
+    <th>Salary</th>
+    <th>Skills</th>
+    <th>Actions</th>
+    <th>Status</th>
+  </tr>
+
+  {% for i in applyjob %}
+        
+      
+  <tr>
+    <td>{{i.applicant.username}}</td>
+    <td>{{i.job.job_titel}}</td>
+    <td>{{i.job.qualification}}</td>
+    <td>{{i.skills}}</td>
+    <td>{{i.job.salary}}</td>
+    <td>
+        <a href="">Edit</a>
+        <a href="">Delete</a>
+        <a href="">View</a>
+    </td>
+    <td>
+      {{i.status}}
+    </td>
+  </tr>
+  {% endfor %}
+
+
+</table>
+
+</body>
+</html>
+
+
+
+
+{% endblock basicinformation %}
+    

@@ -1,0 +1,84 @@
+{% extends 'index.html' %}
+
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Card Style</title>
+<style>
+  .card-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin: 0 -10px; /* Adjust margins as needed */
+}
+
+.card {
+    width: calc(33.33% - 20px); /* Adjust as needed for responsiveness */
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin: 20px 10px; /* Adjust as needed */
+    box-sizing: border-box;
+}
+
+.card h2 {
+    color: #333;
+}
+
+.card p {
+    color: #666;
+}
+
+.card a {
+    display: inline-block;
+    margin-top: 10px;
+    text-decoration: none;
+    color: #007bff; /* Adjust link color as needed */
+}
+
+.card a:hover {
+    text-decoration: underline;
+}
+
+</style>
+</head>
+<body>
+
+    {% include 'message.html' %}
+
+  <div class="card-container">
+    {% for job,already_applied in myJob %}
+    <div class="card">
+        <h2>{{ job.job_titel }}</h2>
+        <p>{{ job.company_name }}</p>
+        <p>{{ job.address }}</p>
+        <p>{{ job.job_desciption }}</p>
+        <p>{{ job.company_desciption }}</p>
+        <p>{{ job.qualification }}</p>
+        <p>{{ job.salary }}</p>
+        <p>{{ job.created_by.username }}</p>
+        
+        
+        {% if already_applied %}
+
+        <p style="color: red;" >You have already applied for this job</p>
+        {% else %}
+        
+
+        <a href=" {% url 'seekerApplyPage' job.id %} ">Apply Now</a>
+            
+        {% endif %}
+            
+
+    </div>
+    {% endfor %}
+</div>
+
+</body>
+</html>
+
+{% endblock content %}

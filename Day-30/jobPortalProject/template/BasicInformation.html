@@ -1,0 +1,57 @@
+{% extends 'profile.html' %}
+
+
+{% block basicinformation %}
+
+         
+<div class="field">
+    <label>Gender:</label>
+    <p>{{user.gender}}</p> <!-- Replace with actual gender -->
+</div>
+<div class="field">
+    <label>Address:</label>
+    <p>{{user.address}}</p> <!-- Replace with actual address -->
+</div>
+<div class="field">
+    <label>Date of Birth:</label>
+    <p>{{user.date_of_birth}}</p> <!-- Replace with actual date of birth -->
+</div>
+<div class="field">
+    <label>User Type:</label>
+    <p>{{user.user_type}}</p> <!-- Replace with actual user type -->
+</div>
+
+
+{% if user.jobseekerprofile %}
+
+
+<div class="field">
+    <label>Skills:</label>
+    <p>{{user.jobseekerprofile.skils}}</p> <!-- Replace with actual skills -->
+</div>
+
+<div class="field">
+    <label>Work Experience:</label>
+    <p>{{user.jobseekerprofile.work_experience}}</p> <!-- Replace with actual work experience -->
+</div>
+
+
+{% elif user.jobrecruiterprofile %}
+
+<div class="field">
+    <label>Company Name:</label>
+    <p>{{user.jobrecruiterprofile.company_name}}</p> <!-- Replace with actual company name -->
+</div>
+
+<div class="field">
+    <label>Company Address:</label>
+    <p>{{user.jobrecruiterprofile.company_address}}</p> <!-- Replace with actual company address -->
+</div>
+    
+{% endif %}
+</div>
+
+
+    
+{% endblock basicinformation %}
+    

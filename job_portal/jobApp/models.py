@@ -53,3 +53,13 @@ class educationModel(models.Model):
         return self.user.first_name+ ' ' +self.user.last_name+ ' '+ self.user.user_type
     
     
+class apply_job_model(models.Model):
+    applicant = models.ForeignKey(Custom_User, on_delete=models.CASCADE, null=True)
+    for_job = models.ForeignKey(add_job, on_delete=models.CASCADE, null=True)
+    
+    skills = models.CharField(max_length=100, null=True)
+    profile_pic = models.ImageField(upload_to='static/media/applycant_pic', null=True)
+    resume = models.FileField(upload_to='static/media/applycant_resume', null=True)
+    qualification = models.CharField(max_length=500, null=True)
+    status = models.CharField(max_length=100, default="Pending", null=True)
+    

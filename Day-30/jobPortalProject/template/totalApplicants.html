@@ -1,0 +1,104 @@
+{% extends 'profile.html' %}
+
+
+{% block basicinformation %}
+
+
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+#customers {
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#customers td, #customers th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#customers tr:nth-child(even){background-color: #f2f2f2;}
+
+#customers tr:hover {background-color: #ddd;}
+
+#customers th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #04AA6D;
+  color: white;
+}
+</style>
+</head>
+<body>
+
+<table id="customers">
+
+
+    <h1>Applicant List for {{job.job_titel}}</h1>
+        
+  <tr>
+    <th>Username</th>
+    <th>Skills</th>
+    <th>Email</th>
+    <th>Qualification</th>
+    <th>resume</th>
+    <th>profile_picture</th>
+    <th>Actions</th>
+  </tr>
+  {% for i in applicant  %}
+     
+  <tr>
+    <td>{{i.applicant.username}}</td>
+    <td>{{i.skills}}</td>
+    <td>{{i.applicant.email}}</td>
+    <td>{{i.qualification}}</td>
+    <td>
+        <a href="{{i.resume.url}}" target="_blank" >Resume</a>
+    </td>
+    <td>
+        <img src=" /{{i.profile_picture}}" alt="" height="50px" width="50px">
+    </td>
+    <td>
+
+        
+        
+        {% if i.status == "Pending" %}
+        <a href=" {% url 'applicationReject' i.id %} ">Reject</a>
+
+        <br>
+        <a href=" {% url 'callforInterview' i.id %} ">Call For Interview</a>
+
+        {% elif i.status == "Approved" %}
+
+        <p>Approved</p>
+
+        {% elif  i.status == "Rejected" %}
+
+        <p>Rejected</p>
+
+          
+        {% endif %}
+          
+
+        
+       
+    </td>
+  </tr>
+
+  
+  {% endfor %}
+
+
+</table>
+
+</body>
+</html>
+
+
+
+
+{% endblock basicinformation %}
+    
