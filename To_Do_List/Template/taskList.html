@@ -1,0 +1,39 @@
+
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="container">
+  <h2>Task Table</h2>
+  <table class="table table-striped">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">Category Name</th>
+        <th scope="col">Task Name</th>
+        <th scope="col">Priority</th>
+        <th scope="col">Status</th>
+        <th scope="col">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for task_item in task %}
+      <tr>
+        <td>{{ task_item.category.CategoryName }}</td>
+        <td>{{ task_item.TaskName }}</td>
+        <td>{{ task_item.priority }}</td>
+        <td>{{ task_item.status }}</td>
+        <td>
+          {% if task_item.status == 'On_Going' %}
+          <a href="{% url 'finishTaskPage' task_item.id %}" class="btn btn-success">Finish</a>
+          {% endif %}
+          <a href="{% url 'editTaskPage' task_item.id %}" class="btn btn-primary">Edit</a>
+          <a href="{% url 'DeleteTaskPage' task_item.id %}" class="btn btn-danger">Delete</a>
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+
+{% endblock content %}
+

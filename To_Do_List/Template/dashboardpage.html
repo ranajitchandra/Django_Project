@@ -1,0 +1,122 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+    
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Task Cards</title>
+  <style>
+    .box {
+        border: 1px solid #ccc;
+        padding: 20px;
+        margin-bottom: 20px;
+        border-radius: 5px;
+      }
+      .completed {
+        background-color: #dff0d8; /* Bootstrap's success color */
+      }
+      .upcoming {
+        background-color: #d9edf7; /* Bootstrap's info color */
+      }
+  </style>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+  <div class="container mt-5">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="box completed">
+              <h4>Completed Task: {{done_count}}</h4>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="box upcoming">
+              <h4>Upcoming Task: {{upcoming_count}}</h4>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        {% for i in task_upcoming %}
+            
+            
+                
+            {% if i.status != 'Done' %}
+            <div class="col-md-4">
+                <div class="card mb-4">
+                <div class="card-header bg-dark text-white">
+                    Task Details Upcoming
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">{{i.TaskName}}</h5>
+                    <p class="card-text">{{i.description}}</p>
+                    <ul class="list-group list-group-flush">
+                    <li class="list-group-item"><strong>Category:</strong>{{i.category.CategoryName}}</li>
+                    <li class="list-group-item"><strong>Priority:</strong>{{i.priority}}</li>
+                    <li class="list-group-item"><strong>Due Date:</strong> {{i.due_date}}</li>
+                    <li class="list-group-item"><strong>Status:</strong> {{i.status}}</li>
+                    <li class="list-group-item"><strong>Created At:</strong> {{i.create_at}}</li>
+                    <li class="list-group-item"><strong>Updated At:</strong> {{i.update_at}}</li>
+                    </ul>
+                </div>
+                <div class="card-footer text-muted">
+                    <a href="{% url 'dash_finishTaskPage' i.id %}" class="btn btn-success">Complete Task</a>
+                </div>
+                </div>
+            </div>
+            {% endif %}
+        {% endfor %}
+    </div>
+
+    <div class="row">
+        {% for i in done %}
+
+        <div class="col-md-4">
+            <div class="card mb-4">
+            <div class="card-header bg-dark text-white">
+                Task Details On Done
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">{{i.TaskName}}</h5>
+                <p class="card-text">{{i.description}}</p>
+                <ul class="list-group list-group-flush">
+                <li class="list-group-item"><strong>Category:</strong>{{i.category.CategoryName}}</li>
+                <li class="list-group-item"><strong>Priority:</strong>{{i.priority}}</li>
+                <li class="list-group-item"><strong>Due Date:</strong> {{i.due_date}}</li>
+                <li class="list-group-item"><strong>Status:</strong> {{i.status}}</li>
+                <li class="list-group-item"><strong>Created At:</strong> {{i.create_at}}</li>
+                <li class="list-group-item"><strong>Updated At:</strong> {{i.update_at}}</li>
+                </ul>
+            </div>
+            
+            {% if i.status != 'Done' %}
+            <div class="card-footer text-muted">
+                <a href="{% url 'dash_finishTaskPage' i.id %}" class="btn btn-success">Complete Task</a>
+            </div>
+            {% endif %}
+                
+            
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+
+
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
+
+
+
+
+
+{% endblock content %}
+    
